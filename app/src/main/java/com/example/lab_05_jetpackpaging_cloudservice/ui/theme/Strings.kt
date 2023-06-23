@@ -18,4 +18,4 @@ const val RegisterSaveButton = "Save"
 
 /* (LIST) */
 const val ListTitle = "List Sensor Logs"
-const val ListIsEmpty = "No logs yet..."
+const val ListIsEmpty = "No logs yet. Add some sensor values"
