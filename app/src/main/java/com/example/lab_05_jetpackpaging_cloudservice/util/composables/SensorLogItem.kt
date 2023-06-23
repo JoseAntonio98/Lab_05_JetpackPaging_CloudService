@@ -23,9 +23,10 @@ import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeMedium
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeSmall
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.TextSizeH4
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.TextSizeP2
+import com.example.lab_05_jetpackpaging_cloudservice.util.model.SensorLog
 
 @Composable
-fun SensorLogItem() {
+fun SensorLogItem(log: SensorLog) {
     /* TODO: Improve History Items styles */
     Row(
         modifier = Modifier
@@ -43,13 +44,13 @@ fun SensorLogItem() {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                text = "Sunday, June 11 2023" + " | " + "07:28 AM",
+                text = log.date + " | " + log.time,
                 fontWeight = FontWeight.Bold,
                 fontSize = TextSizeP2,
                 color = DarkGrayColor
             )
             Text(
-                text = "This is a temporary comment about my sensor...",
+                text = log.comment,
                 fontSize = TextSizeP2,
                 color = DarkGrayColor
             )
@@ -63,7 +64,7 @@ fun SensorLogItem() {
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                text = "0.00",
+                text = log.value.toString(),
                 fontWeight = FontWeight.Bold,
                 fontSize = TextSizeH4,
                 color = PrimaryColor
