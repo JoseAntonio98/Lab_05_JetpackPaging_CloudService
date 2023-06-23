@@ -6,8 +6,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,6 +28,7 @@ import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeExtraLarge
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeLarge
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeMedium
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeMedium20
+import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeSmall
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.TextSizeP1
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.AppLogo
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.CircularBackground
@@ -59,6 +66,15 @@ fun HomeScreen(navController: NavHostController) {
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
+                Icon(
+                    Icons.Default.Edit,
+                    contentDescription = HomeRegisterButton,
+                    tint = SecondaryColor,
+                    modifier = Modifier.size(SizeMedium20)
+                )
+
+                Spacer(modifier = Modifier.width(SizeSmall))
+
                 Text(text = HomeRegisterButton, color = SecondaryColor, fontSize = TextSizeP1)
             }
 
@@ -75,6 +91,15 @@ fun HomeScreen(navController: NavHostController) {
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
+                Icon(
+                    Icons.Default.List,
+                    contentDescription = HomeListButton,
+                    tint = SecondaryColor,
+                    modifier = Modifier.size(SizeMedium20)
+                )
+
+                Spacer(modifier = Modifier.width(SizeSmall))
+
                 Text(text = HomeListButton, color = SecondaryColor, fontSize = TextSizeP1)
             }
         }
