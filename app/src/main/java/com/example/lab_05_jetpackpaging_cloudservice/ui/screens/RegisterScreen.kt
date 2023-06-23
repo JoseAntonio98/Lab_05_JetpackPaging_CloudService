@@ -80,7 +80,6 @@ fun RegisterScreen(navController: NavHostController) {
                     enabled = true,
                     value = sensorValue,
                     onValueChange = { sensorValue = it },
-                    // label = { RegisterSmokeLabel },
                     placeholder = { Text(text = RegisterSmokeLabel) },
                     maxLines = 1,
                     shape = RoundedCornerShape(SizeMedium),
@@ -143,9 +142,8 @@ fun RegisterScreen(navController: NavHostController) {
                     value = comment,
                     onValueChange = { comment = it },
                     placeholder = { Text(text = RegisterComment) },
-                    maxLines = 1,
+                    maxLines = 5,
                     shape = RoundedCornerShape(SizeMedium),
-                    singleLine = true,
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next

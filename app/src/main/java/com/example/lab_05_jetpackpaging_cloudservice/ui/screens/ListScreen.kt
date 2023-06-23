@@ -1,23 +1,34 @@
 package com.example.lab_05_jetpackpaging_cloudservice.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.lab_05_jetpackpaging_cloudservice.R
+import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.DarkGrayColor
+import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.ImageSizeLarge
+import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.ListIsEmpty
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.ListTitle
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.PrimaryColor
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeLarge
+import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeMedium
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.AppHeader
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.ScreenTitle
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.SensorLogItem
@@ -78,28 +89,24 @@ fun ListScreen(navController: NavHostController) {
                         ) {
                             CircularProgressIndicator(color = PrimaryColor)
                         }
+                    } else {
+                        Column(
+                            modifier = Modifier.fillMaxSize(),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.history_empty),
+                                contentDescription = ListIsEmpty,
+                                modifier = Modifier.width(ImageSizeLarge)
+                            )
+
+                            Spacer(modifier = Modifier.height(SizeMedium))
+
+                            Text(text = ListIsEmpty, color = DarkGrayColor)
+                        }
                     }
                 }
             }
-
-            /* TODO: Check this. Load both cases OR don't use in case never the list will be empty */
-//            if (state.items.isEmpty()) {
-//                Column(
-//                    modifier = Modifier.fillMaxSize(),
-//                    horizontalAlignment = Alignment.CenterHorizontally
-//                ) {
-//                    Image(
-//                        painter = painterResource(id = R.drawable.history_empty),
-//                        contentDescription = ListIsEmpty,
-//                        modifier = Modifier.width(ImageSizeLarge)
-//                    )
-//
-//                    Spacer(modifier = Modifier.height(SizeMedium))
-//
-//                    Text(text = ListIsEmpty, color = DarkGrayColor)
-//                }
-//            }
-
         }
     }
 

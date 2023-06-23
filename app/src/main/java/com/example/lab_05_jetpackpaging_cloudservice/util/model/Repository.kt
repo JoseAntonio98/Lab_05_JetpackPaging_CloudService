@@ -12,6 +12,8 @@ class Repository {
             value = it
         )
     }
+    /* FOR: Test empty list */
+    // private val remoteDataSource = emptyList<SensorLog>()
 
     suspend fun getItems(page: Int, pageSize: Int): Result<List<SensorLog>> {
         delay(2000L)
