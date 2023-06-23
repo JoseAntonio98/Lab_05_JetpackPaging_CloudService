@@ -25,6 +25,7 @@ import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.ButtonElevation
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.PrimaryColor
@@ -135,14 +136,13 @@ fun RegisterScreen(navController: NavHostController) {
 
                 Spacer(modifier = Modifier.height(SizeMedium20))
 
-                /* TODO: Increase height or replace by a TextArea element */
                 OutlinedTextField(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().height(96.dp),
                     enabled = true,
                     value = comment,
                     onValueChange = { comment = it },
                     placeholder = { Text(text = RegisterComment) },
-                    maxLines = 5,
+                    maxLines = 3,
                     shape = RoundedCornerShape(SizeMedium),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Text,
