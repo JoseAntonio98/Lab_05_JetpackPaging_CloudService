@@ -1,5 +1,6 @@
 package com.example.lab_05_jetpackpaging_cloudservice.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +28,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.amplifyframework.core.Amplify
+import com.amplifyframework.datastore.generated.model.SensorData
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.ButtonElevation
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.PrimaryColor
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.RegisterComment
