@@ -1,6 +1,5 @@
 package com.example.lab_05_jetpackpaging_cloudservice.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,9 +26,8 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.amplifyframework.core.Amplify
-import com.amplifyframework.datastore.generated.model.SensorData
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.ButtonElevation
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.PrimaryColor
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.RegisterComment
@@ -46,7 +44,14 @@ import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeMedium20
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.TextSizeP1
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.AppHeader
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.ScreenTitle
+import com.example.lab_05_jetpackpaging_cloudservice.util.model.MainViewModel
+import com.example.lab_05_jetpackpaging_cloudservice.util.model.SensorLog
 import com.example.lab_05_jetpackpaging_cloudservice.util.navigation.Destination
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,6 +62,8 @@ fun RegisterScreen(navController: NavHostController) {
     var comment by remember { mutableStateOf("") }
 
     val focusManager = LocalFocusManager.current
+
+    val viewModel = viewModel<MainViewModel>()
 
     Column(
         modifier = Modifier
@@ -140,7 +147,9 @@ fun RegisterScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.height(SizeMedium20))
 
                 OutlinedTextField(
-                    modifier = Modifier.fillMaxWidth().height(96.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(96.dp),
                     enabled = true,
                     value = comment,
                     onValueChange = { comment = it },
@@ -166,6 +175,8 @@ fun RegisterScreen(navController: NavHostController) {
                     ),
                     elevation = ButtonDefaults.buttonElevation(ButtonElevation),
                     onClick = {
+                        val sensorLog = SensorLog(date,time,comment,sensorValue.toDouble())
+                        viewModel.create(sensorLog)
                         navController.navigate(Destination.Home.route)
                     },
                     modifier = Modifier.fillMaxWidth()
@@ -173,6 +184,15 @@ fun RegisterScreen(navController: NavHostController) {
                     Text(text = RegisterSaveButton, color = SecondaryColor, fontSize = TextSizeP1)
                 }
             }
+        }
+    }
+}
+
+@OptIn(DelicateCoroutinesApi::class)
+private fun insertAsync(viewModel: MainViewModel, sensor: SensorLog) {
+    GlobalScope.launch {
+        withContext(Dispatchers.IO) {
+            viewModel.create(sensor)
         }
     }
 }

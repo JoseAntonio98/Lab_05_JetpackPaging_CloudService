@@ -4,6 +4,6 @@ data class SensorLog(
     val date: String,
     val time: String,
     val comment: String,
-    val value: Int
+    val value: Double
 )
 

@@ -5,8 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.amplifyframework.datastore.generated.model.SensorData
 import com.example.lab_05_jetpackpaging_cloudservice.util.paging.DefaultPaginator
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /* (4) */
 class MainViewModel : ViewModel() {
@@ -46,6 +49,11 @@ class MainViewModel : ViewModel() {
             paginator.loadNextItems()
         }
     }
+
+    fun create(sensorLog: SensorLog) {
+        repository.create(sensorLog)
+    }
+
 }
 
 
