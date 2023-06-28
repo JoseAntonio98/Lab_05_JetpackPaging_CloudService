@@ -1,0 +1,6 @@
+{
+  "AppSyncApiName": "SmockeAlertV2",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-06-27T20:30:34.044Z"
+}

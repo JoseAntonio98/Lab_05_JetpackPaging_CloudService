@@ -1,0 +1,8 @@
+type SensorData @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  value: Float!
+  date: String!
+  time: String!
+  comment: String!
+}
+ 
