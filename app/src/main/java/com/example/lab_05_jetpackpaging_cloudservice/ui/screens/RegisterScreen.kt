@@ -47,11 +47,6 @@ import com.example.lab_05_jetpackpaging_cloudservice.util.composables.ScreenTitl
 import com.example.lab_05_jetpackpaging_cloudservice.util.model.MainViewModel
 import com.example.lab_05_jetpackpaging_cloudservice.util.model.SensorLog
 import com.example.lab_05_jetpackpaging_cloudservice.util.navigation.Destination
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -184,15 +179,6 @@ fun RegisterScreen(navController: NavHostController) {
                     Text(text = RegisterSaveButton, color = SecondaryColor, fontSize = TextSizeP1)
                 }
             }
-        }
-    }
-}
-
-@OptIn(DelicateCoroutinesApi::class)
-private fun insertAsync(viewModel: MainViewModel, sensor: SensorLog) {
-    GlobalScope.launch {
-        withContext(Dispatchers.IO) {
-            viewModel.create(sensor)
         }
     }
 }
