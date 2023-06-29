@@ -25,7 +25,6 @@ import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeLarge
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeMedium
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeTopBar
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.TextSizeH1
-import com.example.lab_05_jetpackpaging_cloudservice.util.navigation.Destination
 
 @Composable
 fun AppHeader(navController: NavHostController) {
@@ -44,7 +43,7 @@ fun AppHeader(navController: NavHostController) {
             modifier = Modifier
                 .size(SizeLarge)
                 .clickable {
-                    navController.navigate(Destination.Home.route)
+                    navController.popBackStack()
                 }
         )
 
