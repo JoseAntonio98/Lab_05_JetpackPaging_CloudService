@@ -1,6 +1,7 @@
 package com.example.lab_05_jetpackpaging_cloudservice.ui.screens
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -119,6 +120,7 @@ fun HomeScreen(navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(SizeMedium))
 
+            // Boton Utilizado para cargar datos del JSON a la nube de AWS
             Button(
                 colors = ButtonDefaults.buttonColors(
                     contentColor = SecondaryColor,
@@ -126,8 +128,8 @@ fun HomeScreen(navController: NavHostController) {
                 ),
                 elevation = ButtonDefaults.buttonElevation(ButtonElevation),
                 onClick = {
-                    //Comentando la funcion que permitio llenar la base de datos de AWS
-                    //insertAsync(context, viewModel)
+                    Toast.makeText(context, "No disponible por ahora", Toast.LENGTH_SHORT).show()
+                    // insertAsync(context, viewModel)
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
