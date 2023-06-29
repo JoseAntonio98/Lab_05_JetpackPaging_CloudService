@@ -7,6 +7,7 @@ const val AppHeaderBack = "Back Home"
 /* (HOME) */
 const val HomeRegisterButton = "Register Sensor Values"
 const val HomeListButton = "View Sensor Logs"
+const val FillDatabaseButton = "Fill Database Cloud"
 
 /* (REGISTER) */
 const val RegisterTitle = "Register Sensor Values"
