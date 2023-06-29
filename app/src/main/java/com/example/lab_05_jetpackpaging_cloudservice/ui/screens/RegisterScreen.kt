@@ -131,7 +131,7 @@ fun RegisterScreen(navController: NavHostController) {
                     shape = RoundedCornerShape(SizeMedium),
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Number,
+                        keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next
                     ),
                     keyboardActions = KeyboardActions(
