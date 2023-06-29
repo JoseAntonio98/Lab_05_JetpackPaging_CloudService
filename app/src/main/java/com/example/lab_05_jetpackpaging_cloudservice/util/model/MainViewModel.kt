@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amplifyframework.datastore.generated.model.SensorData
 import com.example.lab_05_jetpackpaging_cloudservice.util.paging.DefaultPaginator
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /* (4) */
 class MainViewModel : ViewModel() {
@@ -59,7 +57,7 @@ class MainViewModel : ViewModel() {
 
 data class ScreenState(
     val isLoading: Boolean = false,
-    val items: List<SensorLog> = emptyList(),
+    val items: List<SensorData> = emptyList(),
     val error: String? = null,
     val endReached: Boolean = false,
     val page: Int = 0

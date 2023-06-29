@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import com.amplifyframework.datastore.generated.model.SensorData
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.DarkGrayColor
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.LightGrayColor
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.PrimaryColor
@@ -26,7 +27,7 @@ import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.TextSizeP2
 import com.example.lab_05_jetpackpaging_cloudservice.util.model.SensorLog
 
 @Composable
-fun SensorLogItem(log: SensorLog) {
+fun SensorLogItem(log: SensorData) {
     /* TODO: Improve History Items styles */
     Row(
         modifier = Modifier

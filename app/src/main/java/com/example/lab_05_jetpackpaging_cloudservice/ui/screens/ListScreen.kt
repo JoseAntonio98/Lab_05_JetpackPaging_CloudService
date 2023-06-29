@@ -36,15 +36,6 @@ import com.example.lab_05_jetpackpaging_cloudservice.util.model.MainViewModel
 
 @Composable
 fun ListScreen(navController: NavHostController) {
-    // val sensorValuesList = emptyList<SensorLog>()
-    // val sensorValuesList = (1..10).map {
-    //     SensorLog(
-    //         date = "Date $it",
-    //         time = "Time $it",
-    //         comment = "Comment   $it",
-    //         value = it
-    //     )
-    // }
 
     val viewModel = viewModel<MainViewModel>()
     val state = viewModel.state

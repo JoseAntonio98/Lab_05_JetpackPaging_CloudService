@@ -1,5 +1,6 @@
 package com.example.lab_05_jetpackpaging_cloudservice.ui.screens
 
+import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,8 +19,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.lab_05_jetpackpaging_cloudservice.tools.FillDatabase
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.ButtonElevation
+import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.FillDatabaseButton
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.HomeListButton
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.HomeRegisterButton
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.PrimaryColor
@@ -32,11 +37,20 @@ import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.SizeSmall
 import com.example.lab_05_jetpackpaging_cloudservice.ui.theme.TextSizeP1
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.AppLogo
 import com.example.lab_05_jetpackpaging_cloudservice.util.composables.CircularBackground
+import com.example.lab_05_jetpackpaging_cloudservice.util.model.MainViewModel
 import com.example.lab_05_jetpackpaging_cloudservice.util.navigation.Destination
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
     CircularBackground()
+
+    val viewModel = viewModel<MainViewModel>()
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -102,6 +116,32 @@ fun HomeScreen(navController: NavHostController) {
 
                 Text(text = HomeListButton, color = SecondaryColor, fontSize = TextSizeP1)
             }
+
+            Spacer(modifier = Modifier.height(SizeMedium))
+
+            Button(
+                colors = ButtonDefaults.buttonColors(
+                    contentColor = SecondaryColor,
+                    containerColor = PrimaryColor
+                ),
+                elevation = ButtonDefaults.buttonElevation(ButtonElevation),
+                onClick = {
+                    //Comentando la funcion que permitio llenar la base de datos de AWS
+                    //insertAsync(context, viewModel)
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = FillDatabaseButton, color = SecondaryColor, fontSize = TextSizeP1)
+            }
+        }
+    }
+}
+
+@OptIn(DelicateCoroutinesApi::class)
+private fun insertAsync(context: Context, viewModel: MainViewModel) {
+    GlobalScope.launch {
+        withContext(Dispatchers.IO) {
+            FillDatabase.readAndParseFile(context, viewModel, "data/sensor_data.json")
         }
     }
 }
